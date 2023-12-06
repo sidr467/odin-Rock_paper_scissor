@@ -30,6 +30,14 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
-playerSelection = "scissors";
-computerSelection = getComputerChoice().toLowerCase();
-console.log(playRound(playerSelection, computerSelection));
+function game(){
+    let a = 0;
+    while(a<5){
+        playerSelection = window.prompt("Enter your choice : ").toLowerCase();
+        computerSelection = getComputerChoice().toLowerCase();
+        console.log(playRound(playerSelection, computerSelection));
+        a++;
+    }
+}
+
+game();
