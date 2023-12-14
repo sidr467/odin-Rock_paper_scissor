@@ -1,9 +1,11 @@
-let choice = ["rock", "paper" , "scissors"];
+let playerScore = 0 ;
+let computerScore = 0;
 
 function getComputerChoice(){
+    let choice = ["rock", "paper" , "scissors"];
     return choice[(Math.floor(Math.random() *choice.length))];
 }
-
+ 
 getComputerChoice();
 
 function playRound(playerSelection, computerSelection){
@@ -11,32 +13,48 @@ function playRound(playerSelection, computerSelection){
         return "The game is tie";
     }
     else if(playerSelection === "rock" && computerSelection === "paper"){
-        return "you loose paper beats rock";
+        computerScore++;
+        return "you loose paper beats rock";       
     }
     else if(playerSelection === "paper" && computerSelection === "rock"){
-        return "you win paper beats rock";
+        playerScore++;
+        return "you win paper beats rock"; 
     }
     else if(playerSelection === "scissors" && computerSelection === "paper"){
+        playerScore++;
         return "you win scissors beats paper";
     }
     else if(playerSelection === "paper" && computerSelection === "scissors"){
+        computerScore++;
         return "you loose scissors beats paper";
     }
     else if(playerSelection === "rock" && computerSelection === "scissors"){
-        return "you win rock beats scissors";
+        playerScore++;
+        return "you win rock beats scissors"; 
     }
     else if(playerSelection === "scissors" && computerSelection === "rock"){
-        return "you loose rock beats scissors";
+        computerScore++;
+        return "you loose rock beats scissors"; 
     }
 }
 
 function game(){
     let a = 0;
+
     while(a<5){
         playerSelection = window.prompt("Enter your choice : ").toLowerCase();
         computerSelection = getComputerChoice().toLowerCase();
         console.log(playRound(playerSelection, computerSelection));
         a++;
+    }
+    if(playerScore>computerScore){
+        console.log("Player Wins");
+    }
+    else if(computerScore>playerScore){
+        console.log("computer Wins");
+    }
+    else{
+        console.log("Game Ties");
     }
 }
 
