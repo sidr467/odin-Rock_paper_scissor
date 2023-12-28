@@ -51,7 +51,7 @@ function game(){
         console.log("Player Wins");
     }
     else if(computerScore>playerScore){
-        console.log("computer Wins");
+        console.log("Computer Wins");
     }
     else{
         console.log("Game Ties");
