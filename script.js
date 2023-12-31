@@ -1,8 +1,14 @@
+const rock = document.getElementById("rock");
+const paper = document.getElementById("paper");
+const scissors = document.getElementById("scissors");
+const result = document.querySelector('.res');
+const finalResult = document.querySelector('#final_result');
 let playerScore = 0 ;
 let computerScore = 0;
+let totalGames = 0;
 
 function getComputerChoice(){
-    let choice = ["rock", "paper" , "scissors"];
+    let choice = ["rock", "paper", "scissors"];
     return choice[(Math.floor(Math.random() *choice.length))];
 }
  
@@ -39,23 +45,49 @@ function playRound(playerSelection, computerSelection){
 }
 
 function game(){
-    let a = 0;
-
-    while(a<5){
-        playerSelection = window.prompt("Enter your choice : ").toLowerCase();
-        computerSelection = getComputerChoice().toLowerCase();
-        console.log(playRound(playerSelection, computerSelection));
-        a++;
-    }
+        
+         // playerSelection = window.prompt("Enter your choice : ").toLowerCase();
+        rock.addEventListener('click' , function(){
+            playerSelection = 'rock';
+            computerSelection = getComputerChoice().toLowerCase();
+            result.innerText =  playRound(playerSelection, computerSelection);
+            totalGames ++;
+        if(totalGames === 5){
+            finalRes();
+        }
+        });
+        paper.addEventListener('click' , function(){
+            playerSelection = 'paper';
+            computerSelection = getComputerChoice().toLowerCase();
+            result.innerText = playRound(playerSelection, computerSelection);
+            totalGames ++;
+        if(totalGames === 5){
+            finalRes();
+        }
+        });
+        scissors.addEventListener('click' , function(){
+            playerSelection = 'scissors';
+            computerSelection = getComputerChoice().toLowerCase();
+            result.innerText = playRound(playerSelection, computerSelection);
+            totalGames ++;
+        if(totalGames === 5){
+            finalRes();
+        }
+        });
+        
+}
+game();
+    
+function finalRes(){
     if(playerScore>computerScore){
-        console.log("Player Wins");
+        finalResult.innerText = "Player Wins";
     }
     else if(computerScore>playerScore){
-        console.log("Computer Wins");
+        finalResult.innerText = "Computer Wins";
     }
     else{
-        console.log("Game Ties");
+      finalResult.innerText = "Game Ties";
     }
 }
 
-game();
+//finalRes();
